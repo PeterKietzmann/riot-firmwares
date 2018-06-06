@@ -34,14 +34,18 @@ USEMODULE += coap_common
 USEMODULE += coap_utils
 USEMODULE += coap_position
 USEMODULE += coap_bmx280
+USEMODULE += coap_led
 
 # Change this to 0 show compiler invocation lines by default:
 QUIET ?= 1
 
 # Application specific definitions and includes
-APPLICATION_NAME ?= "Weather\ Sensor"
+APPLICATION_NAME ?= "IoT\ Day\ Munich\ –\ Weather"
+NODE_LAT ?= 48.151209
+NODE_LNG ?= 11.618467
 # CoAP broker server information
-BROKER_ADDR ?= 2001:660:3207:102::4
+DEFAULT_CHANNEL ?= 11
+BROKER_ADDR ?= fd00:1:2:3:5a:4550:a00:455a
 BROKER_PORT ?= 5683
 
 DIRS += $(CURDIR)/../../modules/coap_common
@@ -56,11 +60,16 @@ INCLUDES += -I$(CURDIR)/../../modules/coap_position
 DIRS += $(CURDIR)/../../modules/coap_bmx280
 INCLUDES += -I$(CURDIR)/../../modules/coap_bmx280
 
+DIRS += $(CURDIR)/../../modules/coap_led
+INCLUDES += -I$(CURDIR)/../../modules/coap_led
+
 include $(RIOTBASE)/Makefile.include
 
 CFLAGS += -DBROKER_ADDR=\"$(BROKER_ADDR)\"
 CFLAGS += -DBROKER_PORT=$(BROKER_PORT)
 CFLAGS += -DAPPLICATION_NAME="\"$(APPLICATION_NAME)\""
+CFLAGS += -DNODE_LAT=\"$(NODE_LAT)\"
+CFLAGS += -DNODE_LNG=\"$(NODE_LNG)\"
 
 # Set a custom channel if needed
 ifneq (,$(filter cc110x,$(USEMODULE)))          # radio is cc110x sub-GHz

@@ -15,6 +15,7 @@
 #include "coap_common.h"
 #include "coap_position.h"
 #include "coap_bmx280.h"
+#include "coap_led.h"
 
 static const shell_command_t shell_commands[] = {
     { NULL, NULL, NULL }
@@ -32,6 +33,7 @@ static const coap_resource_t _resources[] = {
 #ifdef MODULE_BME280
     { "/humidity", COAP_GET, bmx280_humidity_handler },
 #endif
+    { "/led", COAP_GET | COAP_POST | COAP_PUT, led_handler },
     { "/mcu", COAP_GET, mcu_handler },
     { "/name", COAP_GET, name_handler },
     { "/os", COAP_GET, os_handler },

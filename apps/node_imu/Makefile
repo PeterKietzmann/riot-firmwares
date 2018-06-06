@@ -2,7 +2,7 @@
 APPLICATION = node_imu
 
 # If no BOARD is found in the environment, use this default:
-BOARD = iotlab-m3
+BOARD ?= iotlab-m3
 
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../../RIOT
@@ -43,9 +43,10 @@ USEMODULE += coap_imu
 QUIET ?= 1
 
 # Application specific definitions and includes
-APPLICATION_NAME ?= "IMU\ Unit"
+APPLICATION_NAME ?= "IoT\ Day\ Munich\ –\ IMU"
 # CoAP broker server information
-BROKER_ADDR ?= 2001:660:3207:102::4
+DEFAULT_CHANNEL ?= 11
+BROKER_ADDR ?= fd00:1:2:3:5a:4550:a00:455a
 BROKER_PORT ?= 5683
 
 DIRS += $(CURDIR)/../../modules/coap_common

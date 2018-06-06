@@ -39,9 +39,10 @@ USEMODULE += coap_led
 QUIET ?= 1
 
 # Application specific definitions and includes
-APPLICATION_NAME ?= "Node\ LED"
+APPLICATION_NAME ?= "IoT\ Day\ Munich\ –\ LED"
 # CoAP broker server information
-BROKER_ADDR ?= 2001:660:3207:102::4
+DEFAULT_CHANNEL ?= 11
+BROKER_ADDR ?= fd00:1:2:3:5a:4550:a00:455a
 BROKER_PORT ?= 5683
 
 DIRS += $(CURDIR)/../../modules/coap_common
